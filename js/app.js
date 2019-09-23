@@ -6,7 +6,7 @@ var chart;
 var graph;
 var stroke_color='#000000';
 var stroke_width=10;
-const model_url="https://ml-models11.herokuapp.com/model_clothing_R";
+const model_url="https://ml-models11.herokuapp.com/model_mnist_fashion";
 const clothings=['T-shirt/Top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle Boot'];
 async function load()
 {
