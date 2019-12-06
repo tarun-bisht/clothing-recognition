@@ -1,9 +1,6 @@
-<h1>Hand Drawn Clothing Recognition</h1>
-<br>
-<ul>
-  <li><h3><a href="https://tarun-bisht.github.io/ClothingRecognition/">Live Working Demo of project</a></h3></li>
-  <li><b>Hand Drawn Clothing Recognition using Simple Neural Network Program. A Web Application developed with Tensorflowjs and Python, Tensorflow. Developed in Python and model loaded with
-    Tensorflowjs</b></li>
-    <li><a href="https://colab.research.google.com"> Use Google Colab Research to train model</a></li>
-  <li><a href="https://github.com/tarun-bisht/SimpleDrawingPad">Drawing Pad Used in Project</a></li>
-</ul>
+# Hand Drawn Clothing Recognition
+  * ### [Live Working Demo of project](https://tarun-bisht.github.io/ClothingRecognition/)
+  * A Web Application developed with Tensorflowjs recognize hand drawn clothes pictures.
+  * Model trained using Tensorflow, Python.
+  * Model hosted [here](https://ml-models11.herokuapp.com/model_mnist_fashion) using [ml-model-sever](https://github.com/tarun-bisht/ml-model-server)
+  * [Drawing Pad Used in Project](https://github.com/tarun-bisht/SimpleDrawingPad)
