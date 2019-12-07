@@ -8,12 +8,15 @@ var stroke_color='#000000';
 var stroke_width=10;
 const model_url="https://ml-models11.herokuapp.com/model_mnist_fashion";
 const clothings=['T-shirt/Top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle Boot'];
-async function load()
-{
-    model=await tf.loadLayersModel(model_url);
-}
-load();
-function InitThis()
+let model;
+(async function(){
+	model=await tf.loadLayersModel(model_url);
+	$(".loader-wrapper").fadeOut('slow');
+})()
+$(document).ready(function () {
+    Init();
+});
+function Init()
 {
   ctx = document.getElementById('draw').getContext("2d");
   feed=document.getElementById('feed').getContext("2d");
@@ -68,7 +71,7 @@ function clear()
   addDataToGraph(graph,[0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1]);
   predictbar.innerHTML="Predicted Clothing = NAN".toString();
 }
-function predict()
+async function predict()
 {
   feed.drawImage(ctx.canvas,0,0,feed.canvas.width,feed.canvas.height);
   let data=feed.getImageData(0,0,feed.canvas.width,feed.canvas.height).data;
@@ -78,7 +81,8 @@ function predict()
     inputs.push(data[i]/255.0);
   }
   var input_tensor=tf.tensor3d(inputs,[1,28,28])
-  var prediction=model.predict(input_tensor).dataSync();
+  var prediction=await model.predict(input_tensor).data();
+  $('.progress').hide('slow');
   removeDataFromGraph(graph);
   addDataToGraph(graph,prediction);
   var index=indexOfMax(prediction);
@@ -89,7 +93,7 @@ function predict()
   }
   else
   {
-      predictbar.innerHTML="Please use full canvas to Draw. I am Not Sure About it, It may be: "+output_cloth.toString();
+      predictbar.innerHTML="I am Not Sure About it, It may be: "+output_cloth.toString();
   }
 }
 function validPrediction(arr)
