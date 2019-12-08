@@ -82,7 +82,6 @@ async function predict()
   }
   var input_tensor=tf.tensor3d(inputs,[1,28,28])
   var prediction=await model.predict(input_tensor).data();
-  $('.progress').hide('slow');
   removeDataFromGraph(graph);
   addDataToGraph(graph,prediction);
   var index=indexOfMax(prediction);
